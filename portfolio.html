@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prakhar Pandey - Data Science Student at IIT Guwahati | Portfolio showcasing projects, skills, and experience">
+  <title>Prakhar Pandey | Data Science Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <style>
+    :root {
+      --primary-color: #1976d2;
+      --primary-dark: #0d47a1;
+      --text-color: #1e1e2f;
+      --text-light: #444;
+      --bg-color: #f4f9ff;
+      --white: #ffffff;
+      --border-color: #ddd;
+      --shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-color);
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    nav a:hover {
+      color: var(--primary-color);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: var(--primary-color);
+      transition: width 0.3s;
+    }
+    
+    nav a:hover::after {
+      width: 100%;
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 4rem 2rem;
+    }
+    
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    .hero h1 span {
+      color: var(--primary-color);
+    }
+    
+    .hero p {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-img {
+      flex: 1;
+      max-width: 400px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .hero-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s;
+    }
+    
+    .hero-img:hover img {
+      transform: scale(1.02);
+    }
+    
+    .button-boxes {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      padding: 0.8rem 1.5rem;
+      background-color: var(--primary-color);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all 0.3s;
+      display: inline-block;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(25, 118, 210, 0.2);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary-color);
+      color: var(--primary-color);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 4px;
+      bottom: -8px;
+      left: 0;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+    
+    ul {
+      list-style-type: none;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    li::before {
+      content: '•';
+      color: var(--primary-color);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      color: var(--primary-dark);
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .skill-category {
+      background-color: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+    
+    .skill-category h3 {
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .project-card {
+      background-color: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-card h3 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .project-card p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: var(--white);
+      border-top: 1px solid var(--border-color);
+      color: var(--text-light);
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      
+      .hero-text {
+        max-width: 100%;
+      }
+      
+      .button-boxes {
+        justify-content: center;
+      }
+      
+      h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Prakhar Pandey</div>
+    <nav>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#hobbies">Hobbies</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>I'm <span>Prakhar Pandey</span><br>Data Science Student at IIT Guwahati</h1>
+      <p>Passionate about leveraging data to solve complex problems and create impactful solutions. Currently pursuing my B.S. in Data Science and AI with a focus on machine learning and artificial intelligence.</p>
+      <p><i class="fas fa-envelope"></i> prakhar.0879@op.iitg.ac.in | <i class="fas fa-phone"></i> 7607398940</p>
+      <div class="button-boxes">
+        <a href="#projects" class="btn">View Projects</a>
+        <a href="#skills" class="btn btn-outline">My Skills</a>
+        <a href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank" class="btn">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="IMG_20240821_122514_763.jpg" alt="Prakhar Pandey - Data Science Student" loading="lazy">
+    </div>
+  </section>
+
+  <section id="education">
+    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+    <div class="education-item">
+      <h3>Indian Institute of Technology Guwahati</h3>
+      <p><strong>B.S. (Honours) in Data Science and Artificial Intelligence</strong></p>
+      <p>2023 - 2027 | Current CPI: 7.4/10</p>
+      <p>Relevant coursework: Machine Learning, Data Structures, Algorithms, Database Systems, Statistics, Linear Algebra</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2><i class="fas fa-code"></i> Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3>Programming Languages</h3>
+        <ul>
+          <li>Python (Advanced)</li>
+          <li>Java (Intermediate)</li>
+          <li>R (Intermediate)</li>
+          <li>C (Basic)</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Data Science & ML</h3>
+        <ul>
+          <li>Scikit-learn, TensorFlow, PyTorch</li>
+          <li>Pandas, NumPy, Matplotlib, Seaborn</li>
+          <li>XGBoost, NLP techniques</li>
+          <li>Model Evaluation & Optimization</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Web & Databases</h3>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>MySQL, PostgreSQL</li>
+          <li>MongoDB (NoSQL)</li>
+          <li>Flask (Basic)</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h3>Tools & Practices</h3>
+        <ul>
+          <li>Git & GitHub</li>
+          <li>Jupyter Notebooks</li>
+          <li>VS Code, IntelliJ</li>
+          <li>DSA (100+ problems solved)</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h2 style="margin-top: 3rem;"><i class="fas fa-certificate"></i> Certifications</h2>
+    <ul>
+      <li><a href="https://coursera.org/share/f75c6674eb34ee56c55a5f78dc9148ee" target="_blank">Get Started with Python – Google</a></li>
+      <li><a href="https://coursera.org/share/0d64610acc4f47f224608959d87de876" target="_blank">Python for Data Science and AI – IBM</a></li>
+      <li><a href="https://coursera.org/share/e752ebc8399133922cb9791ccbad378d" target="_blank">Entrepreneurship 1 – University of Pennsylvania</a></li>
+      <li><a href="https://coursera.org/share/ea3d1d4098e7bb16142faa5539efe250" target="_blank">Entrepreneurship 2 – University of Pennsylvania</a></li>
+      <li><a href="https://coursera.org/share/0abb5b293b6136a5e1658b0557213337" target="_blank">Leadership Skill – IIM Ahmedabad</a></li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-content">
+          <h3>CGPA Predictor</h3>
+          <p>Predicts CGPA using regression models (under development)</p>
+          <a href="https://cgpa-predictor-fz6l6irucmb4xqz.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Fake News Detection</h3>
+          <p>ML model using TF-IDF and Logistic Regression with 92% F1-score</p>
+          <a href="https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Amazon Product Price Predictor</h3>
+          <p>Linear + XGBoost regression for e-commerce pricing (RMSE: 0.45)</p>
+          <a href="https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Sentiment Analysis</h3>
+          <p>Classifier for social media sentiment with 85% accuracy</p>
+          <a href="https://sentiment-analysis-4e56cuhnhdxtnzyf42j2sj.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-content">
+          <h3>Object Detection</h3>
+          <p>Real-time object detection using YOLO and OpenCV</p>
+          <a href="https://object-detection-nc9kzmp5w8f5db53vz3cjy.streamlit.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies">
+    <h2><i class="fas fa-heart"></i> Hobbies & Interests</h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3><i class="fas fa-cricket"></i> Cricket</h3>
+        <p>I enjoy watching cricket, especially the strategic side of the game. It teaches focus, discipline, and team coordination.</p>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-film"></i> Sci-Fi</h3>
+        <p>Big fan of movies and web series like <em>Money Heist</em> and <em>Dark</em>. I love stories that challenge logic and explore futuristic ideas.</p>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-laptop-code"></i> Tech Exploration</h3>
+        <p>Passionate about exploring new technologies, tools, and innovations in AI, web development, and productivity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2><i class="fas fa-envelope"></i> Contact</h2>
+    <div class="contact-methods">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <a href="mailto:prakhar.0879@op.iitg.ac.in">prakhar.0879@op.iitg.ac.in</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fas fa-phone"></i>
+        </div>
+        <div>
+          <h3>Phone</h3>
+          <a href="tel:+917607398940">+91 7607398940</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div>
+          <h3>LinkedIn</h3>
+          <a href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank">prakhar-pandey</a>
+        </div>
+      </div>
+      
+      <div class="contact-item">
+        <div class="contact-icon">
+          <i class="fab fa-github"></i>
+        </div>
+        <div>
+          <h3>GitHub</h3>
+          <a href="https://github.com/prakhar1605" target="_blank">prakhar1605</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Prakhar Pandey. All rights reserved.</p>
+    <p>Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> by Prakhar</p>
+  </footer>
+</body>
+</html>
