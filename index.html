@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prakhar Pandey - AI Innovator Portfolio">
-  <title>Prakhar Pandey | AI Innovator</title>
+  <meta name="description" content="Prakhar Pandey - 3D Data Science Portfolio | AI Innovator at IIT Guwahati">
+  <title>Prakhar Pandey | 3D Data Science Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     :root {
       --primary-color: #1976d2;
@@ -26,11 +27,6 @@
       --gradient-secondary: linear-gradient(135deg, #ff6d00 0%, #e65100 100%);
       --neon-blue: #00f3ff;
       --neon-purple: #bd00ff;
-      --breaking-bad: #1a7b1a;
-      --madmen: #c9a66b;
-      --unicorn: #9b59b6;
-      --billion-code: #3498db;
-      --super-pumped: #e74c3c;
     }
     
     * {
@@ -65,6 +61,17 @@
       0% { transform: translateY(0px); }
       50% { transform: translateY(-20px); }
       100% { transform: translateY(0px); }
+    }
+    
+    /* 3D Scene Container */
+    #scene-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
     }
     
     header {
@@ -261,10 +268,6 @@
     .hero-img:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 30px rgba(25, 118, 210, 0.4);
-    }
-    
-    .hero-img:hover::before {
-      opacity: 0.1;
     }
     
     .hero-img img {
@@ -744,7 +747,7 @@
       background: var(--neon-blue);
     }
     
-    /* Media Queries - Mobile Responsiveness */
+    /* Media Queries */
     @media (max-width: 1024px) {
       .hero {
         flex-direction: column;
@@ -801,232 +804,8 @@
         grid-template-columns: 1fr;
       }
       
-      .skills-grid {
-        grid-template-columns: 1fr;
-      }
-      
       .hero h1 {
         font-size: 2.5rem;
-      }
-      
-      section {
-        padding: 6rem 1rem 3rem;
-      }
-      
-      .project-card, .skill-category, .contact-item {
-        max-width: 100%;
-      }
-      
-      .hero-contact a {
-        font-size: 1rem;
-      }
-      
-      .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1rem;
-      }
-      
-      .project-image {
-        height: 180px;
-      }
-      
-      .contact-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-      }
-      
-      .footer-links {
-        gap: 1rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 2rem;
-      }
-      
-      .hero p {
-        font-size: 1rem;
-      }
-      
-      .hero-contact a {
-        font-size: 0.9rem;
-      }
-      
-      .btn {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .button-boxes {
-        flex-direction: column;
-      }
-      
-      .hero-img {
-        max-width: 100%;
-      }
-      
-      .footer-links a {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-      }
-    }
-    
-    /* Movie Cards */
-    .movies-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .movie-card {
-      background-color: var(--card-bg);
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-      transition: all 0.4s;
-      border: 1px solid var(--border-color);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-    
-    .movie-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    }
-    
-    .movie-card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      z-index: -1;
-      border-radius: 18px;
-      opacity: 0.7;
-    }
-    
-    .movie-card::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--card-bg);
-      border-radius: 16px;
-      z-index: -1;
-    }
-    
-    .movie-card.breaking-bad::before {
-      background: var(--breaking-bad);
-    }
-    
-    .movie-card.madmen::before {
-      background: var(--madmen);
-    }
-    
-    .movie-card.unicorn::before {
-      background: var(--unicorn);
-    }
-    
-    .movie-card.billion::before {
-      background: var(--billion-code);
-    }
-    
-    .movie-card.super::before {
-      background: var(--super-pumped);
-    }
-    
-    .movie-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
-      color: white;
-    }
-    
-    .breaking-bad .movie-icon {
-      background-color: var(--breaking-bad);
-    }
-    
-    .madmen .movie-icon {
-      background-color: var(--madmen);
-    }
-    
-    .unicorn .movie-icon {
-      background-color: var(--unicorn);
-    }
-    
-    .billion .movie-icon {
-      background-color: var(--billion-code);
-    }
-    
-    .super .movie-icon {
-      background-color: var(--super-pumped);
-    }
-    
-    .movie-card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-      color: var(--white);
-    }
-    
-    .movie-card p {
-      color: rgba(255, 255, 255, 0.85);
-      line-height: 1.6;
-    }
-    
-    /* Mobile Navigation Toggle */
-    .mobile-menu-btn {
-      display: none;
-      background: transparent;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 1000;
-    }
-    
-    @media (max-width: 768px) {
-      .mobile-menu-btn {
-        display: block;
-        position: absolute;
-        top: 1.5rem;
-        right: 1rem;
-      }
-      
-      nav {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 80%;
-        height: 100vh;
-        background: rgba(10, 12, 26, 0.95);
-        flex-direction: column;
-        padding: 6rem 2rem;
-        transition: left 0.3s ease;
-        z-index: 999;
-        backdrop-filter: blur(10px);
-      }
-      
-      nav.active {
-        left: 0;
-      }
-      
-      nav a {
-        padding: 1rem 0;
-        font-size: 1.2rem;
       }
     }
   </style>
@@ -1034,21 +813,17 @@
 <body>
   <div id="particles-js"></div>
   
-  <!-- Floating elements -->
   <div class="floating-element floating-1"></div>
   <div class="floating-element floating-2"></div>
   <div class="floating-element floating-3"></div>
   
   <header>
     <div class="logo">Prakhar Pandey</div>
-    <button class="mobile-menu-btn" id="mobileMenuBtn">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav id="mainNav">
+    <nav>
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
-      <a href="#movies">Movies & Shows</a>
+      <a href="#hobbies">Hobbies</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -1070,7 +845,7 @@
       </div>
     </div>
     <div class="hero-img animate delay-4">
-      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Prakhar Pandey - AI Innovator" loading="lazy">
+      <img src="IMG_20240821_122514_763.jpg" alt="Prakhar Pandey - Data Science Student" loading="lazy">
     </div>
   </section>
 
@@ -1221,7 +996,7 @@
         </div>
       </div>
       
-      <div class="project-card animate delay-5">
+      <div class="project-card animate">
         <div class="project-image">
           <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" alt="DSA Visualizer">
         </div>
@@ -1236,68 +1011,25 @@
           <a href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank" class="btn">View Project</a>
         </div>
       </div>
-      
-      <!-- Online Code Compiler Project -->
-      <div class="project-card animate delay-6">
-        <div class="project-image">
-          <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Code Compiler">
-        </div>
-        <div class="project-content">
-          <h3>Online Code Compiler</h3>
-          <p>Full-stack online code editor like Replit using CodeExecutor API. Supports Java, Python execution with real-time error/output display.</p>
-          <div class="project-tags">
-            <span class="project-tag">Java</span>
-            <span class="project-tag">Flask</span>
-            <span class="project-tag">MongoDB</span>
-            <span class="project-tag">Full-Stack</span>
-          </div>
-          <a href="https://code-compiler-sage.vercel.app/" target="_blank" class="btn">View Project</a>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section id="movies">
-    <h2 class="section-title"><i class="fas fa-film"></i> Favorite Movies & Shows</h2>
-    <div class="movies-grid">
-      <div class="movie-card animate breaking-bad">
-        <div class="movie-icon">
-          <i class="fas fa-flask"></i>
-        </div>
-        <h3>Breaking Bad</h3>
-        <p>A high school chemistry teacher turned meth maker, exploring the transformation of Walter White into the drug lord Heisenberg. The show is a masterclass in character development and storytelling.</p>
+  <section id="hobbies">
+    <h2 class="section-title"><i class="fas fa-heart"></i> Hobbies & Interests</h2>
+    <div class="skills-grid">
+      <div class="skill-category animate">
+        <h3><i class="fas fa-cricket"></i> Cricket</h3>
+        <p>I enjoy watching cricket, especially the strategic side of the game. It teaches focus, discipline, and team coordination.</p>
       </div>
       
-      <div class="movie-card animate delay-1 madmen">
-        <div class="movie-icon">
-          <i class="fas fa-smoking"></i>
-        </div>
-        <h3>Mad Men</h3>
-        <p>A drama about one of New York's most prestigious ad agencies at the beginning of the 1960s, focusing on the personal lives of the people who work in the business.</p>
+      <div class="skill-category animate delay-1">
+        <h3><i class="fas fa-film"></i> Sci-Fi</h3>
+        <p>Big fan of movies and web series like <em>Money Heist</em> and <em>Dark</em>. I love stories that challenge logic and explore futuristic ideas.</p>
       </div>
       
-      <div class="movie-card animate delay-2 unicorn">
-        <div class="movie-icon">
-          <i class="fas fa-horse-head"></i>
-        </div>
-        <h3>Unicorn: Warriors Eternal</h3>
-        <p>Animated series about a team of ancient heroes who are reawakened to protect the world from an ancient evil. A unique blend of fantasy and adventure.</p>
-      </div>
-      
-      <div class="movie-card animate delay-3 billion">
-        <div class="movie-icon">
-          <i class="fas fa-code"></i>
-        </div>
-        <h3>Billion Dollar Code</h3>
-        <p>Based on true events, two computer geniuses take on the tech giant Google in a high-stakes legal battle over the creation of Google Earth.</p>
-      </div>
-      
-      <div class="movie-card animate delay-4 super">
-        <div class="movie-icon">
-          <i class="fas fa-car"></i>
-        </div>
-        <h3>Super Pumped</h3>
-        <p>An anthology series that explores the success and failures of some of the world's most powerful companies, starting with Uber and its controversial CEO Travis Kalanick.</p>
+      <div class="skill-category animate delay-2">
+        <h3><i class="fas fa-laptop-code"></i> Tech Exploration</h3>
+        <p>Passionate about exploring new technologies, tools, and innovations in AI, web development, and productivity.</p>
       </div>
     </div>
   </section>
@@ -1428,41 +1160,25 @@
         observer.observe(el);
       });
       
-      // Mobile menu toggle
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mainNav = document.getElementById('mainNav');
-      
-      mobileMenuBtn.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        const icon = mobileMenuBtn.querySelector('i');
-        if (mainNav.classList.contains('active')) {
-          icon.classList.remove('fa-bars');
-          icon.classList.add('fa-times');
-        } else {
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        }
-      });
-      
-      // Close menu when clicking on a link
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mainNav.classList.remove('active');
-          const icon = mobileMenuBtn.querySelector('i');
-          icon.classList.remove('fa-times');
-          icon.classList.add('fa-bars');
-        });
-      });
-      
-      // Smooth scrolling for navigation links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
+      // Add floating effect to cards on hover
+      const cards = document.querySelectorAll('.skill-category, .project-card, .contact-item');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
           
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          
+          const angleY = (x - centerX) / 25;
+          const angleX = (centerY - y) / 25;
+          
+          card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(-10px)';
         });
       });
     });
