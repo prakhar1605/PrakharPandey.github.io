@@ -270,11 +270,16 @@
       box-shadow: 0 15px 30px rgba(25, 118, 210, 0.4);
     }
     
+    .hero-img:hover::before {
+      opacity: 0.1;
+    }
+    
     .hero-img img {
       width: 100%;
       height: auto;
       display: block;
       transition: transform 0.5s;
+      border-radius: 16px;
     }
     
     .hero-img:hover img {
@@ -682,8 +687,6 @@
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
-    .delay-5 { animation-delay: 0.5s; }
-    .delay-6 { animation-delay: 0.6s; }
     
     /* 3D floating effect */
     .floating-element {
@@ -747,7 +750,63 @@
       background: var(--neon-blue);
     }
     
-    /* Media Queries */
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1000;
+    }
+    
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 12, 26, 0.95);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      z-index: 999;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease-in-out;
+    }
+    
+    .mobile-nav.active {
+      transform: translateY(0);
+    }
+    
+    .mobile-nav a {
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      transition: all 0.3s;
+    }
+    
+    .mobile-nav a:hover {
+      color: var(--neon-blue);
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    
+    /* Mobile-Specific Adjustments */
     @media (max-width: 1024px) {
       .hero {
         flex-direction: column;
@@ -770,20 +829,21 @@
       .hero-img {
         max-width: 80%;
       }
+      
+      nav {
+        display: none;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+      }
     }
     
     @media (max-width: 768px) {
       header {
         padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
-      }
-      
-      nav {
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
       }
       
       .section-title {
@@ -807,26 +867,133 @@
       .hero h1 {
         font-size: 2.5rem;
       }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+      }
+      
+      .skill-category, .project-card, .contact-item {
+        padding: 1.5rem;
+      }
+      
+      .project-image {
+        height: 180px;
+      }
+      
+      .footer-links {
+        flex-wrap: wrap;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero {
+        padding: 6rem 1rem 2rem;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .hero-contact a {
+        font-size: 0.9rem;
+        justify-content: center;
+        width: 100%;
+      }
+      
+      .button-boxes {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+      
+      .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .hero-img {
+        max-width: 100%;
+      }
+      
+      section {
+        padding: 6rem 1rem 3rem;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .skills-grid, .projects-grid, .contact-methods {
+        gap: 1.5rem;
+      }
+      
+      .project-content {
+        padding: 1.5rem;
+      }
+      
+      .project-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .project-card p {
+        font-size: 0.95rem;
+      }
+      
+      .contact-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+      
+      .contact-item h3 {
+        font-size: 1.1rem;
+      }
+      
+      .contact-item a {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
   
+  <!-- 3D Floating Elements -->
   <div class="floating-element floating-1"></div>
   <div class="floating-element floating-2"></div>
   <div class="floating-element floating-3"></div>
   
   <header>
     <div class="logo">Prakhar Pandey</div>
-    <nav>
+    <nav id="desktop-nav">
       <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#hobbies">Hobbies</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="mobile-menu-btn" id="mobile-menu-btn">
+      <i class="fas fa-bars"></i>
+    </button>
   </header>
+  
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" id="mobile-nav">
+    <button class="close-btn" id="close-btn">
+      <i class="fas fa-times"></i>
+    </button>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#hobbies">Hobbies</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <section class="hero">
     <div class="hero-text">
@@ -845,7 +1012,7 @@
       </div>
     </div>
     <div class="hero-img animate delay-4">
-      <img src="MG_20240821_122514_763.jpg" alt="Prakhar Pandey - Data Science Student" loading="lazy">
+      <img src="Myphoto.jpeg" alt="Prakhar Pandey - Data Science Student" loading="lazy">
     </div>
   </section>
 
@@ -1011,6 +1178,24 @@
           <a href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank" class="btn">View Project</a>
         </div>
       </div>
+      
+      <!-- New Online Code Compiler Project -->
+      <div class="project-card animate">
+        <div class="project-image">
+          <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Online Code Compiler">
+        </div>
+        <div class="project-content">
+          <h3>Online Code Compiler</h3>
+          <p>Full-stack online code editor like Replit using CodeExecutor API with user authentication and code saving features</p>
+          <div class="project-tags">
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">MongoDB</span>
+            <span class="project-tag">HTML/CSS</span>
+          </div>
+          <a href="https://code-compiler-sage.vercel.app/" target="_blank" class="btn">View Project</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1024,7 +1209,7 @@
       
       <div class="skill-category animate delay-1">
         <h3><i class="fas fa-film"></i> Sci-Fi</h3>
-        <p>Big fan of movies and web series like <em>Money Heist</em> and <em>Dark</em>. I love stories that challenge logic and explore futuristic ideas.</p>
+        <p>Big fan of movies and web series like <em>Money Heist</em>, <em>Dark</em>, <em>The Billion Dollar Code</em>, <em>Super Pumped</em>, and <em>Black Mirror</em>. I love stories that challenge logic and explore futuristic ideas.</p>
       </div>
       
       <div class="skill-category animate delay-2">
@@ -1138,7 +1323,31 @@
       retina_detect: true
     });
 
-    // Floating animation for elements
+    // Mobile menu functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+    
+    closeBtn.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close menu when clicking on links
+    const mobileLinks = mobileNav.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // Animation for elements when they come into view
     document.addEventListener('DOMContentLoaded', () => {
       const animateElements = document.querySelectorAll('.animate');
       
