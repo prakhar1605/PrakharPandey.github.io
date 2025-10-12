@@ -14,7 +14,7 @@
       --card: #ffffff;
       --muted: #6b7280;
       --text: #0f1724;
-      --accent: #0b5db6; /* professional blue */
+      --accent: #0b5db6;
       --accent-2: #0a4a8a;
       --border: #e6e9ef;
       --shadow: 0 6px 18px rgba(16,24,40,0.06);
@@ -27,8 +27,6 @@
       font-family:'Inter',system-ui,Arial,Helvetica,sans-serif;
       background:var(--bg);
       color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
     }
 
@@ -37,7 +35,7 @@
 
     nav{display:flex;gap:20px}
     nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:0.95rem;padding:8px;border-radius:8px}
-    nav a:hover{background:transparent;color:var(--accent)}
+    nav a:hover{color:var(--accent)}
 
     main{max-width:1100px;margin:120px auto;padding:32px}
 
@@ -59,14 +57,12 @@
     .profile-card img{width:100%;height:auto;border-radius:8px}
     .profile-role{margin-top:10px;font-weight:600;color:var(--muted)}
 
-    /* Sections */
     section{margin-top:48px}
     .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;margin-bottom:18px;color:var(--text)}
 
     .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
     .grid{display:grid;gap:18px}
 
-    /* Experience */
     .experience-item{margin-bottom:14px}
     .exp-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
     .exp-title{font-weight:700}
@@ -74,28 +70,22 @@
     .exp-bullets{margin-top:10px;color:var(--muted)}
     .exp-bullets li{margin-bottom:8px}
 
-    /* Projects */
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
     .project-card{display:flex;flex-direction:column;gap:12px}
-    .project-image{height:140px;background:#f2f4f8;border-radius:8px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);overflow:hidden}
-    .project-image img{width:100%;height:100%;object-fit:cover;border-radius:8px;display:block} 
     .project-content h3{margin:0;font-size:1.05rem}
     .project-content p{margin:0;color:var(--muted);font-size:0.95rem}
     .project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .project-tag{background:#eef6ff;color:var(--accent-2);padding:6px 10px;border-radius:999px;font-weight:600;font-size:0.82rem;border:1px solid rgba(11,93,182,0.06)}
 
-    /* Skills */
     .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
     .skill-list li{color:var(--muted);margin-bottom:8px}
 
-    /* Contact */
     .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .contact-item{display:flex;gap:12px;align-items:center}
     .contact-icon{width:46px;height:46px;border-radius:8px;background:#f2f4f8;display:flex;align-items:center;justify-content:center;color:var(--accent)}
 
     footer{text-align:center;padding:36px 12px;color:var(--muted);font-size:0.95rem;margin-top:40px}
 
-    /* Responsive */
     @media (max-width:900px){
       .hero{flex-direction:column}
       header{padding:14px}
@@ -143,7 +133,6 @@
       </aside>
     </section>
 
-    <!-- Education -->
     <section id="education">
       <div class="section-title">Education</div>
       <div class="card">
@@ -154,7 +143,6 @@
       </div>
     </section>
 
-    <!-- Work Experience -->
     <section id="experience">
       <div class="section-title">Work Experience</div>
       <div class="card">
@@ -175,7 +163,6 @@
       </div>
     </section>
 
-    <!-- Skills -->
     <section id="skills">
       <div class="section-title">Skills</div>
       <div class="grid">
@@ -206,14 +193,11 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects">
       <div class="section-title">Projects</div>
       <div class="projects-grid">
 
-        <!-- FastIntern -->
         <div class="card project-card">
-          <div class="project-image"><img src="projects/fastintern.png" alt="FastIntern — Internship Finder" loading="lazy"></div>
           <div class="project-content">
             <h3>FastIntern – AI-Powered Internship Finder</h3>
             <p>Built a Streamlit web app using Google Custom Search API to fetch and filter internships with role-strict search. Added filters (location, role, compensation) and CSV export.</p>
@@ -222,15 +206,11 @@
               <span class="project-tag">Google Custom Search</span>
               <span class="project-tag">Web Scraping</span>
             </div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-outline" href="https://fastintern-dmnf7d3e6miu3nlzsukfld.streamlit.app/" target="_blank">Live Demo</a>
-            </div>
+            <div style="margin-top:10px"><a class="btn btn-outline" href="https://fastintern-dmnf7d3e6miu3nlzsukfld.streamlit.app/" target="_blank">Live Demo</a></div>
           </div>
         </div>
 
-        <!-- Fake News -->
         <div class="card project-card">
-          <div class="project-image"><img src="projects/fake-news.png" alt="Fake News Detection" loading="lazy"></div>
           <div class="project-content">
             <h3>Fake News Detection System</h3>
             <p>Built a classifier using TF-IDF and Logistic Regression on 20K+ news articles, achieving 92% F1-score. Deployed via Streamlit for real-time detection.</p>
@@ -239,15 +219,11 @@
               <span class="project-tag">Scikit-learn</span>
               <span class="project-tag">Streamlit</span>
             </div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-outline" href="https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/" target="_blank">Live Demo</a>
-            </div>
+            <div style="margin-top:10px"><a class="btn btn-outline" href="https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/" target="_blank">Live Demo</a></div>
           </div>
         </div>
 
-        <!-- Price Predictor -->
         <div class="card project-card">
-          <div class="project-image"><img src="projects/price-predictor.png" alt="Product Price Prediction" loading="lazy"></div>
           <div class="project-content">
             <h3>Product Price Prediction (E‑commerce)</h3>
             <p>Trained an XGBoost model on 150K+ entries to predict product prices; achieved RMSE of 0.45 and deployed via Flask API for real-time predictions.</p>
@@ -256,15 +232,11 @@
               <span class="project-tag">Flask API</span>
               <span class="project-tag">Pandas</span>
             </div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-outline" href="https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/" target="_blank">Live Demo</a>
-            </div>
+            <div style="margin-top:10px"><a class="btn btn-outline" href="https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/" target="_blank">Live Demo</a></div>
           </div>
         </div>
 
-        <!-- DSA Visualizer -->
         <div class="card project-card">
-          <div class="project-image"><img src="projects/dsa-visualizer.png" alt="DSA Visualizer Tool" loading="lazy"></div>
           <div class="project-content">
             <h3>DSA Visualizer Tool</h3>
             <p>Created interactive visualizations for Binary Tree traversal and sorting algorithms using HTML/CSS. Aimed to make algorithm concepts easier to grasp step-by-step.</p>
@@ -272,15 +244,11 @@
               <span class="project-tag">JavaScript</span>
               <span class="project-tag">Visualization</span>
             </div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-outline" href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank">Live Demo</a>
-            </div>
+            <div style="margin-top:10px"><a class="btn btn-outline" href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank">Live Demo</a></div>
           </div>
         </div>
 
-        <!-- Drona AI (keep existing) -->
         <div class="card project-card">
-          <div class="project-image"><img src="projects/drona-ai.png" alt="Drona AI — EdTech Chatbot" loading="lazy"></div>
           <div class="project-content">
             <h3>Drona AI – Your Modern Dronacharya</h3>
             <p>AI-powered EdTech chatbot for competitive exam preparation. Includes adaptive question selection and feedback systems.</p>
@@ -288,73 +256,4 @@
               <span class="project-tag">AI</span>
               <span class="project-tag">Chatbot</span>
               <span class="project-tag">EdTech</span>
-            </div>
-            <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn btn-outline" href="https://dronaai.in" target="_blank">View Project</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Hobbies -->
-    <section id="hobbies">
-      <div class="section-title">Hobbies & Interests</div>
-      <div class="grid" style="gap:12px">
-        <div class="card">
-          <h4>Cricket</h4>
-          <p style="color:var(--muted)">I enjoy watching and analysing cricket — it teaches strategy, focus and teamwork.</p>
-        </div>
-
-        <div class="card">
-          <h4>Sci‑Fi & Tech Exploration</h4>
-          <p style="color:var(--muted)">Fan of sci‑fi shows and a keen explorer of new tools in AI, web development and product design.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="section-title">Contact</div>
-      <div class="card contact-grid">
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-          <div>
-            <div style="font-weight:700">Email</div>
-            <div style="color:var(--muted)"><a href="mailto:prakhar9999pandey@gmail.com">prakhar9999pandey@gmail.com</a><br><a href="mailto:prakhar.0879@op.iitg.ac.in">prakhar.0879@op.iitg.ac.in</a></div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fas fa-phone"></i></div>
-          <div>
-            <div style="font-weight:700">Phone</div>
-            <div style="color:var(--muted)"><a href="tel:+917607398940">+91 7607398940</a></div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
-          <div>
-            <div style="font-weight:700">LinkedIn</div>
-            <div style="color:var(--muted)"><a href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank">prakhar-pandey</a></div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon"><i class="fab fa-github"></i></div>
-          <div>
-            <div style="font-weight:700">GitHub</div>
-            <div style="color:var(--muted)"><a href="https://github.com/prakhar1605" target="_blank">prakhar1605</a></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      &copy; 2025 Prakhar Pandey • Built with focus on clarity and professionalism
-    </footer>
-  </main>
-</body>
-</html>
+            </div
