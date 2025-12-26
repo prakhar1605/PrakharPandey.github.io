@@ -3,103 +3,472 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prakhar Pandey - Data Science & AI Portfolio | IIT Guwahati">
-  <title>Prakhar Pandey | Data Science & AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Prakhar Pandey - AI Engineer specializing in LLM, Agentic AI & GenAI | IIT Guwahati">
+  <title>Prakhar Pandey | AI Engineer & GenAI Specialist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
   <style>
     :root{
-      --bg: #f6f7fb;
-      --card: #ffffff;
-      --muted: #6b7280;
-      --text: #0f1724;
-      --accent: #0b5db6;
-      --accent-2: #0a4a8a;
-      --border: #e6e9ef;
-      --shadow: 0 6px 18px rgba(16,24,40,0.06);
-      --radius: 12px;
+      --bg: #0a0e1a;
+      --bg-secondary: #111827;
+      --card: #1a1f35;
+      --card-hover: #222844;
+      --muted: #9ca3af;
+      --text: #f9fafb;
+      --accent: #3b82f6;
+      --accent-2: #60a5fa;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+      --border: #2d3548;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --radius: 16px;
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
-      font-family:'Inter',system-ui,Arial,Helvetica,sans-serif;
+      font-family:'Inter',system-ui,sans-serif;
       background:var(--bg);
       color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    /* Animated Background */
+    body::before{
+      content:'';
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(10, 14, 26, 0.85);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--border);
+      padding:20px 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      z-index:100;
+      transition:all 0.3s ease;
+    }
+
+    .logo{
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;
+      color:var(--text);
+      font-size:1.4rem;
+      background:linear-gradient(135deg, var(--accent-2), var(--accent));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    nav{display:flex;gap:28px}
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 12px;
+      border-radius:8px;
+      transition:all 0.3s ease;
+    }
+    nav a:hover{color:var(--accent-2);background:rgba(59, 130, 246, 0.08)}
+
+    main{
+      max-width:1200px;
+      margin:140px auto 60px;
+      padding:0 32px;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:48px;
+      align-items:start;
+      margin-bottom:80px;
+    }
+
+    .hero-left h1{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:3rem;
+      line-height:1.1;
+      margin-bottom:16px;
+      background:linear-gradient(135deg, #fff, var(--accent-2));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .hero-left .subtitle{
+      font-size:1.3rem;
+      color:var(--accent-2);
+      font-weight:600;
+      margin-bottom:20px;
+    }
+
+    .hero-left p{
+      color:var(--muted);
+      font-size:1.05rem;
+      margin-bottom:28px;
+      line-height:1.7;
+    }
+
+    .contacts{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+    }
+    
+    .contacts a{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:var(--text);
+      text-decoration:none;
+      padding:10px 16px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--card);
+      font-size:0.9rem;
+      transition:all 0.3s ease;
+    }
+    
+    .contacts a:hover{
+      border-color:var(--accent);
+      background:var(--card-hover);
+      transform:translateY(-2px);
+    }
+
+    .buttons{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 24px;
+      border-radius:12px;
+      border:none;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      font-size:0.95rem;
+      transition:all 0.3s ease;
+      box-shadow:0 4px 16px var(--accent-glow);
+    }
+    
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 24px var(--accent-glow);
+    }
+    
+    .btn-outline{
+      background:transparent;
+      border:2px solid var(--accent);
+      color:var(--accent-2);
+      box-shadow:none;
+    }
+    
+    .btn-outline:hover{
+      background:rgba(59, 130, 246, 0.08);
+    }
+
+    .hero-right .profile-card{
+      background:var(--card);
+      padding:24px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      border:1px solid var(--border);
+      text-align:center;
+      position:sticky;
+      top:120px;
+    }
+    
+    .profile-card img{
+      width:100%;
+      height:auto;
+      border-radius:12px;
+      margin-bottom:16px;
+      border:3px solid var(--border);
+    }
+    
+    .profile-role{
+      font-weight:600;
+      color:var(--muted);
+      font-size:0.95rem;
       line-height:1.5;
     }
 
-    header{position:fixed;top:0;left:0;right:0;background:transparent;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;z-index:50}
-    .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--text);font-size:1.25rem}
+    section{margin-bottom:80px}
+    
+    .section-title{
+      font-family:'Space Grotesk',sans-serif;
+      font-size:2rem;
+      margin-bottom:32px;
+      color:var(--text);
+      position:relative;
+      padding-bottom:12px;
+    }
+    
+    .section-title::after{
+      content:'';
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:60px;
+      height:4px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius:2px;
+    }
 
-    nav{display:flex;gap:20px}
-    nav a{color:var(--text);text-decoration:none;font-weight:600;font-size:0.95rem;padding:8px;border-radius:8px}
-    nav a:hover{color:var(--accent)}
+    .card{
+      background:var(--card);
+      padding:32px;
+      border-radius:var(--radius);
+      border:1px solid var(--border);
+      box-shadow:var(--shadow);
+      transition:all 0.3s ease;
+    }
+    
+    .card:hover{
+      border-color:rgba(59, 130, 246, 0.3);
+      transform:translateY(-4px);
+      box-shadow:0 12px 40px rgba(0, 0, 0, 0.5);
+    }
 
-    main{max-width:1100px;margin:120px auto;padding:32px}
+    .experience-item{
+      padding-bottom:28px;
+      margin-bottom:28px;
+      border-bottom:1px solid var(--border);
+    }
+    
+    .experience-item:last-child{
+      border-bottom:none;
+      margin-bottom:0;
+      padding-bottom:0;
+    }
+    
+    .exp-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-bottom:12px;
+    }
+    
+    .exp-title{
+      font-size:1.25rem;
+      font-weight:700;
+      color:var(--text);
+    }
+    
+    .exp-company{
+      color:var(--accent-2);
+      font-weight:600;
+      margin-top:4px;
+    }
+    
+    .exp-duration{
+      color:var(--muted);
+      font-size:0.9rem;
+      padding:6px 12px;
+      background:rgba(59, 130, 246, 0.08);
+      border-radius:8px;
+      white-space:nowrap;
+    }
+    
+    .exp-location{
+      color:var(--muted);
+      font-size:0.9rem;
+      margin-top:6px;
+      display:flex;
+      align-items:center;
+      gap:6px;
+    }
+    
+    .exp-bullets{
+      margin-top:16px;
+      padding-left:20px;
+    }
+    
+    .exp-bullets li{
+      color:var(--muted);
+      margin-bottom:10px;
+      line-height:1.6;
+    }
 
-    .hero{display:flex;gap:36px;align-items:center}
-    .hero-left{flex:1}
-    .hero h1{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin-bottom:8px}
-    .hero p{color:var(--muted);margin-bottom:16px}
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(340px, 1fr));
+      gap:24px;
+    }
+    
+    .project-card{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      height:100%;
+    }
+    
+    .project-content h3{
+      font-size:1.2rem;
+      margin-bottom:12px;
+      color:var(--text);
+    }
+    
+    .project-content p{
+      color:var(--muted);
+      font-size:0.95rem;
+      line-height:1.6;
+    }
+    
+    .project-tags{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    
+    .project-tag{
+      background:rgba(59, 130, 246, 0.1);
+      color:var(--accent-2);
+      padding:6px 14px;
+      border-radius:20px;
+      font-weight:600;
+      font-size:0.8rem;
+      border:1px solid rgba(59, 130, 246, 0.2);
+    }
 
-    .contacts{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px}
-    .contacts a{display:inline-flex;align-items:center;gap:8px;color:var(--text);text-decoration:none;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow);font-size:0.95rem}
-    .contacts a .fa-envelope{color:var(--accent)}
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:24px;
+    }
+    
+    .skill-category{
+      background:var(--bg-secondary);
+      padding:24px;
+      border-radius:12px;
+      border:1px solid var(--border);
+    }
+    
+    .skill-category h4{
+      margin-bottom:16px;
+      color:var(--accent-2);
+      font-size:1.1rem;
+    }
+    
+    .skill-list{
+      list-style:none;
+      padding:0;
+    }
+    
+    .skill-list li{
+      color:var(--muted);
+      margin-bottom:10px;
+      padding-left:20px;
+      position:relative;
+    }
+    
+    .skill-list li::before{
+      content:'▹';
+      position:absolute;
+      left:0;
+      color:var(--accent-2);
+      font-weight:bold;
+    }
 
-    .buttons{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:white;text-decoration:none;font-weight:600}
-    .btn-outline{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+    .cert-list{
+      list-style:none;
+      padding:0;
+    }
+    
+    .cert-list li{
+      margin-bottom:14px;
+      padding:12px;
+      background:var(--bg-secondary);
+      border-radius:10px;
+      border:1px solid var(--border);
+      transition:all 0.3s ease;
+    }
+    
+    .cert-list li:hover{
+      border-color:var(--accent);
+      background:var(--card-hover);
+    }
+    
+    .cert-list a{
+      color:var(--text);
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    
+    .cert-list a:hover{color:var(--accent-2)}
 
-    .hero-right{width:240px;flex-shrink:0}
-    .profile-card{background:var(--card);padding:16px;border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);text-align:center}
-    .profile-card img{width:100%;height:auto;border-radius:8px}
-    .profile-role{margin-top:10px;font-weight:600;color:var(--muted)}
-
-    section{margin-top:48px}
-    .section-title{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;margin-bottom:18px;color:var(--text)}
-
-    .card{background:var(--card);padding:20px;border-radius:12px;border:1px solid var(--border);box-shadow:var(--shadow)}
-    .grid{display:grid;gap:18px}
-
-    .experience-item{margin-bottom:14px}
-    .exp-meta{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
-    .exp-title{font-weight:700}
-    .exp-duration{color:var(--muted);font-size:0.95rem}
-    .exp-bullets{margin-top:10px;color:var(--muted)}
-    .exp-bullets li{margin-bottom:8px}
-
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
-    .project-card{display:flex;flex-direction:column;gap:12px}
-    .project-content h3{margin:0;font-size:1.05rem}
-    .project-content p{margin:0;color:var(--muted);font-size:0.95rem}
-    .project-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-    .project-tag{background:#eef6ff;color:var(--accent-2);padding:6px 10px;border-radius:999px;font-weight:600;font-size:0.82rem;border:1px solid rgba(11,93,182,0.06)}
-
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-    .skill-list li{color:var(--muted);margin-bottom:8px}
-
-    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-    .contact-item{display:flex;gap:12px;align-items:center}
-    .contact-icon{width:46px;height:46px;border-radius:8px;background:#f2f4f8;display:flex;align-items:center;justify-content:center;color:var(--accent)}
-
-    footer{text-align:center;padding:36px 12px;color:var(--muted);font-size:0.95rem;margin-top:40px}
+    footer{
+      text-align:center;
+      padding:48px 20px;
+      color:var(--muted);
+      font-size:0.95rem;
+      border-top:1px solid var(--border);
+      margin-top:80px;
+    }
 
     @media (max-width:900px){
-      .hero{flex-direction:column}
-      header{padding:14px}
-      main{margin-top:100px;padding:20px}
+      .hero{
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      
+      header{padding:16px 20px}
+      
+      nav{
+        gap:16px;
+        flex-wrap:wrap;
+      }
+      
+      main{
+        margin-top:120px;
+        padding:0 20px;
+      }
+      
+      .hero-left h1{font-size:2.2rem}
+      
       .hero-right{width:100%}
+      
+      .profile-card{position:static}
+      
+      .projects-grid{grid-template-columns:1fr}
+      
+      .skills-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Prakhar Pandey</div>
+    <div class="logo">PP</div>
     <nav>
       <a href="#education">Education</a>
-      <a href="#experience">Work</a>
+      <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
@@ -109,26 +478,36 @@
   <main>
     <section class="hero">
       <div class="hero-left">
-        <h1>Prakhar Pandey<br><span style="font-weight:600">Data Science & AI — IIT Guwahati (3rd Year)</span></h1>
-        <p>Problem solver focused on building practical AI systems and data-driven products. Experienced in building ML pipelines, web deployments, and automation tools. Actively seeking internship opportunities to contribute to real-world projects.</p>
+        <h1>Prakhar Pandey</h1>
+        <div class="subtitle">AI Engineer | LLM & Agentic AI Specialist</div>
+        <p>Building the future with Generative AI and Large Language Models. Specialized in developing intelligent autonomous systems, RAG pipelines, and production-ready AI solutions. Currently pursuing B.S. in Data Science & AI at IIT Guwahati.</p>
 
         <div class="contacts">
-          <a href="mailto:prakhar9999pandey@gmail.com"><i class="fas fa-envelope"></i> prakhar9999pandey@gmail.com</a>
-          <a href="mailto:prakhar.0879@op.iitg.ac.in"><i class="fas fa-envelope"></i> prakhar.0879@op.iitg.ac.in</a>
-          <a href="tel:+917607398940"><i class="fas fa-phone"></i> +91 7607398940</a>
+          <a href="mailto:prakhar9999pandey@gmail.com">
+            <i class="fas fa-envelope"></i> prakhar9999pandey@gmail.com
+          </a>
+          <a href="tel:+917607398940">
+            <i class="fas fa-phone"></i> +91 7607398940
+          </a>
         </div>
 
         <div class="buttons">
-          <a class="btn" href="#projects"><i class="fas fa-project-diagram"></i> View Projects</a>
-          <a class="btn btn-outline" href="#skills"><i class="fas fa-code"></i> My Skills</a>
-          <a class="btn" href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a class="btn" href="#projects">
+            <i class="fas fa-code"></i> View Projects
+          </a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a class="btn btn-outline" href="https://github.com/yourusername" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
         </div>
       </div>
 
       <aside class="hero-right">
         <div class="profile-card">
           <img src="Myphoto.jpeg" alt="Prakhar Pandey" loading="lazy">
-          <div class="profile-role">B.S. (Hons) Data Science & AI — IIT Guwahati</div>
+          <div class="profile-role">B.S. Data Science & AI<br>IIT Guwahati | 3rd Year</div>
         </div>
       </aside>
     </section>
@@ -136,128 +515,266 @@
     <section id="education">
       <div class="section-title">Education</div>
       <div class="card">
-        <h3>Indian Institute of Technology Guwahati</h3>
-        <p style="color:var(--muted);margin-top:6px"><strong>B.S. (Honours) in Data Science and Artificial Intelligence</strong> • 2023 – 2027</p>
-        <p style="color:var(--muted);margin-top:8px">Current CPI: 7.4/10</p>
-        <p style="color:var(--muted);margin-top:8px">Relevant coursework: Machine Learning, Data Structures, Algorithms, Database Systems, Statistics, Linear Algebra</p>
+        <h3 style="font-size:1.4rem;margin-bottom:10px">Indian Institute of Technology Guwahati</h3>
+        <p style="color:var(--accent-2);font-weight:600;margin-bottom:8px">B.S. (Honours) in Data Science and Artificial Intelligence</p>
+        <p style="color:var(--muted);margin-bottom:6px">2023 – 2027 | CPI: 7.4/10</p>
+        <p style="color:var(--muted);margin-top:16px"><strong>Relevant Coursework:</strong> Machine Learning, Deep Learning, Natural Language Processing, Data Structures & Algorithms, Database Systems, Statistics, Linear Algebra, Probability Theory</p>
       </div>
     </section>
 
     <section id="experience">
       <div class="section-title">Work Experience</div>
       <div class="card">
+        
         <div class="experience-item">
-          <div class="exp-meta">
+          <div class="exp-header">
             <div>
-              <div class="exp-title">Compeers AI — AI Engineer Intern</div>
-              <div style="color:var(--muted);margin-top:6px">October 2025 – Present</div>
+              <div class="exp-title">AI Engineer Intern</div>
+              <div class="exp-company">ThinkSpace AI</div>
+              <div class="exp-location">
+                <i class="fas fa-map-marker-alt"></i> Singapore (Remote)
+              </div>
             </div>
-            <div class="exp-duration">Internship</div>
+            <div class="exp-duration">Dec 2025 – Present</div>
           </div>
-          <ul class="exp-bullets" style="margin-top:12px">
-            <li>Developed and optimized AI models to automate business workflows, improving efficiency and scalability.</li>
-            <li>Contributed to the design of automation tools for market research and competitor analysis.</li>
-            <li>Assisted in building LLM-based systems for generating automated reports, insights, and business summaries.</li>
+          <ul class="exp-bullets">
+            <li>Developing advanced LLM-powered solutions for enterprise automation and intelligent decision-making systems</li>
+            <li>Building agentic AI workflows using LangChain, LlamaIndex, and custom orchestration frameworks</li>
+            <li>Implementing RAG (Retrieval-Augmented Generation) pipelines for knowledge-intensive applications</li>
+            <li>Optimizing model performance through prompt engineering, fine-tuning, and efficient inference strategies</li>
           </ul>
         </div>
+
+        <div class="experience-item">
+          <div class="exp-header">
+            <div>
+              <div class="exp-title">AI Engineer Intern</div>
+              <div class="exp-company">Compeers AI</div>
+              <div class="exp-location">
+                <i class="fas fa-map-marker-alt"></i> United States (Remote)
+              </div>
+            </div>
+            <div class="exp-duration">Sep 2025 – Present</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Architected and deployed end-to-end AI automation pipelines for business intelligence and market analysis</li>
+            <li>Developed multi-agent systems for autonomous competitor research and strategic insights generation</li>
+            <li>Built production-grade LLM applications with GPT-4, Claude, and open-source models for automated report generation</li>
+            <li>Implemented semantic search and document processing systems using vector databases and embedding models</li>
+          </ul>
+        </div>
+
       </div>
     </section>
 
     <section id="skills">
-      <div class="section-title">Skills</div>
-      <div class="grid">
-        <div class="card skills-grid">
-          <div>
-            <h4 style="margin-bottom:8px">Programming Languages</h4>
-            <ul class="skill-list"><li>Python (Advanced)</li><li>Java (Intermediate)</li><li>R (Intermediate)</li><li>C (Basic)</li></ul>
-          </div>
-
-          <div style="margin-top:12px">
-            <h4 style="margin-bottom:8px">Data Science & ML</h4>
-            <ul class="skill-list"><li>Scikit-learn, TensorFlow, PyTorch</li><li>Pandas, NumPy, Matplotlib</li><li>XGBoost, NLP</li><li>Model Evaluation & Optimization</li></ul>
-          </div>
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        
+        <div class="skill-category">
+          <h4><i class="fas fa-brain"></i> Generative AI & LLMs</h4>
+          <ul class="skill-list">
+            <li>LangChain, LlamaIndex, AutoGen</li>
+            <li>OpenAI GPT-4, Claude, Gemini</li>
+            <li>RAG Systems & Vector DBs</li>
+            <li>Prompt Engineering & Fine-tuning</li>
+            <li>Agentic AI & Multi-Agent Systems</li>
+          </ul>
         </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-code"></i> Programming & Frameworks</h4>
+          <ul class="skill-list">
+            <li>Python (Advanced)</li>
+            <li>TensorFlow, PyTorch, Keras</li>
+            <li>FastAPI, Flask, Streamlit</li>
+            <li>Java, R, C</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-robot"></i> ML & Data Science</h4>
+          <ul class="skill-list">
+            <li>Scikit-learn, XGBoost</li>
+            <li>NLP & Computer Vision</li>
+            <li>Pandas, NumPy, Matplotlib</li>
+            <li>Model Deployment & MLOps</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <h4><i class="fas fa-tools"></i> Tools & Technologies</h4>
+          <ul class="skill-list">
+            <li>Git, Docker, AWS</li>
+            <li>SQL, MongoDB, Pinecone</li>
+            <li>HuggingFace, Weights & Biases</li>
+            <li>Jupyter, VS Code</li>
+          </ul>
+        </div>
+
       </div>
 
-      <div style="margin-top:20px">
+      <div style="margin-top:48px">
         <div class="section-title">Certifications</div>
         <div class="card">
-          <ul style="list-style:none;padding-left:0">
-            <li style="margin-bottom:8px"><a href="https://coursera.org/share/f75c6674eb34ee56c55a5f78dc9148ee" target="_blank">Get Started with Python – Google</a></li>
-            <li style="margin-bottom:8px"><a href="https://coursera.org/share/0d64610acc4f47f224608959d87de876" target="_blank">Python for Data Science and AI – IBM</a></li>
-            <li style="margin-bottom:8px"><a href="https://coursera.org/share/e752ebc8399133922cb9791ccbad378d" target="_blank">Entrepreneurship 1 – University of Pennsylvania</a></li>
-            <li style="margin-bottom:8px"><a href="https://coursera.org/share/ea3d1d4098e7bb16142faa5539efe250" target="_blank">Entrepreneurship 2 – University of Pennsylvania</a></li>
-            <li style="margin-bottom:8px"><a href="https://coursera.org/share/0abb5b293b6136a5e1658b0557213337" target="_blank">Leadership Skill – IIM Ahmedabad</a></li>
+          <ul class="cert-list">
+            <li>
+              <a href="https://coursera.org/share/f75c6674eb34ee56c55a5f78dc9148ee" target="_blank">
+                <i class="fas fa-certificate" style="color:var(--accent-2)"></i>
+                <span>Get Started with Python – Google</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://coursera.org/share/0d64610acc4f47f224608959d87de876" target="_blank">
+                <i class="fas fa-certificate" style="color:var(--accent-2)"></i>
+                <span>Python for Data Science and AI – IBM</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://coursera.org/share/e752ebc8399133922cb9791ccbad378d" target="_blank">
+                <i class="fas fa-certificate" style="color:var(--accent-2)"></i>
+                <span>Entrepreneurship 1 – University of Pennsylvania</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://coursera.org/share/ea3d1d4098e7bb16142faa5539efe250" target="_blank">
+                <i class="fas fa-certificate" style="color:var(--accent-2)"></i>
+                <span>Entrepreneurship 2 – University of Pennsylvania</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://coursera.org/share/0abb5b293b6136a5e1658b0557213337" target="_blank">
+                <i class="fas fa-certificate" style="color:var(--accent-2)"></i>
+                <span>Leadership Skills – IIM Ahmedabad</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
     </section>
 
     <section id="projects">
-      <div class="section-title">Projects</div>
+      <div class="section-title">Featured Projects</div>
       <div class="projects-grid">
 
         <div class="card project-card">
           <div class="project-content">
-            <h3>FastIntern – AI-Powered Internship Finder</h3>
-            <p>Built a Streamlit web app using Google Custom Search API to fetch and filter internships with role-strict search. Added filters (location, role, compensation) and CSV export.</p>
+            <h3><i class="fas fa-search"></i> FastIntern – AI Internship Finder</h3>
+            <p>Intelligent web scraping platform leveraging Google Custom Search API with advanced filtering algorithms. Features real-time data aggregation, semantic role matching, and automated CSV export capabilities.</p>
             <div class="project-tags">
               <span class="project-tag">Streamlit</span>
-              <span class="project-tag">Google Custom Search</span>
+              <span class="project-tag">API Integration</span>
               <span class="project-tag">Web Scraping</span>
+              <span class="project-tag">Automation</span>
             </div>
-            <div style="margin-top:10px"><a class="btn btn-outline" href="https://fastintern-dmnf7d3e6miu3nlzsukfld.streamlit.app/" target="_blank">Live Demo</a></div>
+            <div style="margin-top:16px">
+              <a class="btn btn-outline" href="https://fastintern-dmnf7d3e6miu3nlzsukfld.streamlit.app/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="card project-card">
           <div class="project-content">
-            <h3>Fake News Detection System</h3>
-            <p>Built a classifier using TF-IDF and Logistic Regression on 20K+ news articles, achieving 92% F1-score. Deployed via Streamlit for real-time detection.</p>
+            <h3><i class="fas fa-shield-alt"></i> Fake News Detection System</h3>
+            <p>NLP-powered classifier using TF-IDF vectorization and ensemble models on 20K+ articles. Achieved 92% F1-score with real-time prediction API and interactive Streamlit dashboard.</p>
             <div class="project-tags">
               <span class="project-tag">NLP</span>
+              <span class="project-tag">ML Classification</span>
               <span class="project-tag">Scikit-learn</span>
               <span class="project-tag">Streamlit</span>
             </div>
-            <div style="margin-top:10px"><a class="btn btn-outline" href="https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/" target="_blank">Live Demo</a></div>
+            <div style="margin-top:16px">
+              <a class="btn btn-outline" href="https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="card project-card">
           <div class="project-content">
-            <h3>Product Price Prediction (E‑commerce)</h3>
-            <p>Trained an XGBoost model on 150K+ entries to predict product prices; achieved RMSE of 0.45 and deployed via Flask API for real-time predictions.</p>
+            <h3><i class="fas fa-chart-line"></i> E-commerce Price Predictor</h3>
+            <p>Production-ready ML model trained on 150K+ product entries using XGBoost regression. Deployed via Flask API with RMSE of 0.45 for real-time price predictions and market analysis.</p>
             <div class="project-tags">
               <span class="project-tag">XGBoost</span>
               <span class="project-tag">Flask API</span>
-              <span class="project-tag">Pandas</span>
+              <span class="project-tag">Feature Engineering</span>
+              <span class="project-tag">Deployment</span>
             </div>
-            <div style="margin-top:10px"><a class="btn btn-outline" href="https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/" target="_blank">Live Demo</a></div>
+            <div style="margin-top:16px">
+              <a class="btn btn-outline" href="https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="card project-card">
           <div class="project-content">
-            <h3>DSA Visualizer Tool</h3>
-            <p>Created interactive visualizations for Binary Tree traversal and sorting algorithms using HTML/CSS. Aimed to make algorithm concepts easier to grasp step-by-step.</p>
+            <h3><i class="fas fa-project-diagram"></i> DSA Visualizer Tool</h3>
+            <p>Interactive algorithm visualization platform for binary trees, sorting algorithms, and data structures. Built with vanilla JavaScript for optimal performance and educational clarity.</p>
             <div class="project-tags">
               <span class="project-tag">JavaScript</span>
+              <span class="project-tag">Algorithms</span>
               <span class="project-tag">Visualization</span>
+              <span class="project-tag">EdTech</span>
             </div>
-            <div style="margin-top:10px"><a class="btn btn-outline" href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank">Live Demo</a></div>
+            <div style="margin-top:16px">
+              <a class="btn btn-outline" href="https://dsa-visualizer-tool-six.vercel.app/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="card project-card">
           <div class="project-content">
-            <h3>Drona AI – Your Modern Dronacharya</h3>
-            <p>AI-powered EdTech chatbot for competitive exam preparation. Includes adaptive question selection and feedback systems.</p>
+            <h3><i class="fas fa-graduation-cap"></i> Drona AI – EdTech Chatbot</h3>
+            <p>AI-powered conversational assistant for competitive exam preparation. Features adaptive question selection, personalized feedback systems, and intelligent progress tracking.</p>
             <div class="project-tags">
-              <span class="project-tag">AI</span>
+              <span class="project-tag">LLM</span>
               <span class="project-tag">Chatbot</span>
               <span class="project-tag">EdTech</span>
-            </div
-               <div style="margin-top:10px"><a class="btn btn-outline" href="https://www.dronaai.in//" target="_blank">Live Demo</a></div>
+              <span class="project-tag">AI Tutor</span>
+            </div>
+            <div style="margin-top:16px">
+              <a class="btn btn-outline" href="https://www.dronaai.in/" target="_blank">
+                <i class="fas fa-external-link-alt"></i> Live Demo
+              </a>
+            </div>
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">Get In Touch</div>
+      <div class="card" style="text-align:center;padding:48px 32px">
+        <p style="font-size:1.1rem;color:var(--muted);margin-bottom:28px;max-width:600px;margin-left:auto;margin-right:auto">
+          I'm actively seeking opportunities in AI Engineering, GenAI, and LLM development. Let's connect and build something amazing together!
+        </p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="mailto:prakhar9999pandey@gmail.com">
+            <i class="fas fa-envelope"></i> Email Me
+          </a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/prakhar-pandey-56267a2a2" target="_blank">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a class="btn btn-outline" href="https://github.com/yourusername" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Prakhar Pandey. Built with passion for AI and innovation.</p>
+  </footer>
+
+</body>
+</html>
