@@ -83,6 +83,14 @@ export const projects = [
     link: 'https://www.dronaai.in/',
     featured: true,
   },
+  {
+    name: 'DSA Visualizer',
+    tag: 'Interactive EdTech',
+    blurb:
+      'Interactive algorithm visualization platform for binary trees, sorting algorithms, and core data structures — built with vanilla JavaScript for smooth, real-time animations and educational clarity.',
+    stack: ['JavaScript', 'Algorithms', 'Visualization'],
+    link: 'https://dsa-visualizer-tool-six.vercel.app/',
+  },
 ]
 
 export const skills = [

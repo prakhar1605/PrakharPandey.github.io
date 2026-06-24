@@ -70,7 +70,7 @@ export default function App() {
       <div className="content">
         <Navbar />
         <main>
-          <Hero />
+          <Hero started={loaded} />
           <About />
           <Experience />
           <Projects />
