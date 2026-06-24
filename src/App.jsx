@@ -4,7 +4,6 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 import Scene3D from './components/Scene3D'
-import Cursor from './components/Cursor'
 import Preloader from './components/Preloader'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
@@ -19,6 +18,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
   const [loaded, setLoaded] = useState(false)
+  const [render3D, setRender3D] = useState(true)
 
   useEffect(() => {
     const lenis = new Lenis({ lerp: 0.09, smoothWheel: true })
@@ -41,12 +41,15 @@ export default function App() {
     }
     document.addEventListener('click', onClick)
 
-    // Fade the 3D core down as you leave the hero so content stays readable
+    // Fade the 3D core down as you leave the hero so content stays readable,
+    // and pause the WebGL render loop entirely once it's off-screen.
     const onScroll = () => {
       const canvas = document.querySelector('.bg-canvas')
       if (!canvas) return
       const t = Math.min(window.scrollY / window.innerHeight, 1)
       canvas.style.opacity = String(1 - t * 0.62)
+      const vis = window.scrollY < window.innerHeight * 0.95
+      setRender3D((prev) => (prev === vis ? prev : vis))
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
@@ -62,8 +65,7 @@ export default function App() {
   return (
     <>
       {!loaded && <Preloader onDone={() => setLoaded(true)} />}
-      <Cursor />
-      <Scene3D />
+      <Scene3D active={render3D} />
       <div className="scrim" />
       <div className="grain" />
       <ScrollProgress />

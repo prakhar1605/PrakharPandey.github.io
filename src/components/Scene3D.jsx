@@ -7,7 +7,7 @@ import * as THREE from 'three'
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 700
 
 // Drifting neural particle field
-function Neurons({ count = isMobile ? 900 : 2200 }) {
+function Neurons({ count = isMobile ? 550 : 1300 }) {
   const ref = useRef()
   const positions = useMemo(() => {
     const arr = new Float32Array(count * 3)
@@ -84,12 +84,13 @@ function ResponsiveCamera() {
   return null
 }
 
-export default function Scene3D() {
+export default function Scene3D({ active = true }) {
   return (
     <Canvas
       className="bg-canvas"
       style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: 0, pointerEvents: 'none' }}
-      dpr={isMobile ? [1, 1.3] : [1, 1.8]}
+      frameloop={active ? 'always' : 'never'}
+      dpr={isMobile ? [1, 1.2] : [1, 1.5]}
       camera={{ position: [0, 0, 8], fov: 55 }}
       gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
     >

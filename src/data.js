@@ -17,7 +17,7 @@ export const stats = [
   { value: '3,000+', label: 'Users served' },
   { value: '3', label: 'AI internships' },
   { value: '1710', label: 'LeetCode rating' },
-  { value: '700+', label: 'Problems solved' },
+  { value: '900+', label: 'LeetCode solved' },
 ]
 
 export const experience = [
