@@ -72,6 +72,7 @@ export const projects = [
       'Full-stack AI career platform serving 3,000+ users — aggregating live jobs, 1,500+ IIT professor research roles, an LLM resume analyzer with skill-gap detection, 2,000+ HR contacts for one-click outreach, and an AI cold-email generator.',
     stack: ['Next.js', 'Supabase', 'Resend'],
     link: '#',
+    live: true,
     featured: true,
   },
   {
@@ -81,6 +82,7 @@ export const projects = [
       'Autonomous AI interview platform with an adaptive difficulty engine and long-term memory via ChromaDB-backed RAG — reached 500+ users in two weeks, fully organic. Real-time token streaming with Redis session caching for concurrency at scale.',
     stack: ['Python', 'Streamlit', 'ChromaDB', 'Redis'],
     link: 'https://www.dronaai.in/',
+    live: true,
     featured: true,
   },
   {
@@ -90,6 +92,7 @@ export const projects = [
       'Interactive algorithm visualization platform for binary trees, sorting algorithms, and core data structures — built with vanilla JavaScript for smooth, real-time animations and educational clarity.',
     stack: ['JavaScript', 'Algorithms', 'Visualization'],
     link: 'https://dsa-visualizer-tool-six.vercel.app/',
+    live: true,
   },
 ]
 

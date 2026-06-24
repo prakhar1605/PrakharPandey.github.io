@@ -26,27 +26,47 @@ export default function Projects() {
       </Reveal>
 
       <div className="proj-grid">
-        {projects.map((p, i) => (
-          <Reveal key={p.name} delay={(i % 3) * 0.06}>
-            <article
-              className={`proj-card ${p.featured ? 'feat' : ''}`}
-              onMouseMove={tilt}
-              onMouseLeave={resetTilt}
-            >
-              <span className="proj-tag">{p.tag}</span>
-              <h3>{p.name}</h3>
-              <p>{p.blurb}</p>
-              <div className="proj-stack">
-                {p.stack.map((s) => <span key={s}>{s}</span>)}
-              </div>
-              {p.link && p.link !== '#' && (
-                <a className="proj-link" href={p.link} target="_blank" rel="noreferrer">
-                  View →
-                </a>
-              )}
-            </article>
-          </Reveal>
-        ))}
+        {projects.map((p, i) => {
+          const hasLink = p.link && p.link !== '#'
+          const isLive = p.live && hasLink
+          const open = () => { if (hasLink) window.open(p.link, '_blank', 'noopener') }
+          return (
+            <Reveal key={p.name} delay={(i % 3) * 0.06}>
+              <article
+                className={`proj-card ${p.featured ? 'feat' : ''} ${hasLink ? 'clickable' : ''}`}
+                onMouseMove={tilt}
+                onMouseLeave={resetTilt}
+                onClick={open}
+                role={hasLink ? 'link' : undefined}
+                tabIndex={hasLink ? 0 : undefined}
+                onKeyDown={(e) => { if (hasLink && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open() } }}
+              >
+                <div className="proj-top">
+                  <span className="proj-tag">{p.tag}</span>
+                  {isLive && (
+                    <span className="live-badge"><span className="pulse" /> LIVE</span>
+                  )}
+                </div>
+                <h3>{p.name}</h3>
+                <p>{p.blurb}</p>
+                <div className="proj-stack">
+                  {p.stack.map((s) => <span key={s}>{s}</span>)}
+                </div>
+                {hasLink && (
+                  <a
+                    className="proj-link"
+                    href={p.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {isLive ? 'Visit live site →' : 'View →'}
+                  </a>
+                )}
+              </article>
+            </Reveal>
+          )
+        })}
       </div>
     </section>
   )
