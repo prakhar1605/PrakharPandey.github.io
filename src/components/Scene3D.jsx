@@ -1,6 +1,6 @@
 import { useRef, useMemo, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import { MeshDistortMaterial, Icosahedron, Float, Points, PointMaterial } from '@react-three/drei'
+import { Sphere, Icosahedron, Float, Points, PointMaterial } from '@react-three/drei'
 import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -57,17 +57,15 @@ function Core() {
   return (
     <Float speed={1.4} rotationIntensity={0.35} floatIntensity={0.7}>
       <group>
-        <Icosahedron ref={inner} args={[1.9, 8]}>
-          <MeshDistortMaterial
+        <Sphere ref={inner} args={[1.9, 64, 64]}>
+          <meshStandardMaterial
             color="#1e40af"
             emissive="#4f86ff"
-            emissiveIntensity={1.1}
-            roughness={0.12}
-            metalness={0.92}
-            distort={0.42}
-            speed={1.8}
+            emissiveIntensity={1.0}
+            roughness={0.15}
+            metalness={0.9}
           />
-        </Icosahedron>
+        </Sphere>
         <Icosahedron ref={shell} args={[2.7, 1]}>
           <meshBasicMaterial color="#5b8cff" wireframe transparent opacity={0.22} />
         </Icosahedron>

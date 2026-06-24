@@ -14,7 +14,7 @@ export const profile = {
 }
 
 export const stats = [
-  { value: '2,500+', label: 'Users served' },
+  { value: '3,000+', label: 'Users served' },
   { value: '3', label: 'AI internships' },
   { value: '1710', label: 'LeetCode rating' },
   { value: '700+', label: 'Problems solved' },
@@ -69,7 +69,7 @@ export const projects = [
     name: 'CareerLift',
     tag: 'AI Career Platform',
     blurb:
-      'Full-stack AI career platform serving 2,500+ users — aggregating live jobs, 1,500+ IIT professor research roles, an LLM resume analyzer with skill-gap detection, 2,000+ HR contacts for one-click outreach, and an AI cold-email generator.',
+      'Full-stack AI career platform serving 3,000+ users — aggregating live jobs, 1,500+ IIT professor research roles, an LLM resume analyzer with skill-gap detection, 2,000+ HR contacts for one-click outreach, and an AI cold-email generator.',
     stack: ['Next.js', 'Supabase', 'Resend'],
     link: '#',
     featured: true,
@@ -81,30 +81,7 @@ export const projects = [
       'Autonomous AI interview platform with an adaptive difficulty engine and long-term memory via ChromaDB-backed RAG — reached 500+ users in two weeks, fully organic. Real-time token streaming with Redis session caching for concurrency at scale.',
     stack: ['Python', 'Streamlit', 'ChromaDB', 'Redis'],
     link: 'https://www.dronaai.in/',
-  },
-  {
-    name: 'FastIntern',
-    tag: 'AI Internship Finder',
-    blurb:
-      'Web-scraping platform on Google Custom Search API with semantic role matching, real-time aggregation, and automated CSV export.',
-    stack: ['Streamlit', 'APIs', 'Automation'],
-    link: 'https://fastintern-dmnf7d3e6miu3nlzsukfld.streamlit.app/',
-  },
-  {
-    name: 'Fake News Detection',
-    tag: 'NLP Classifier',
-    blurb:
-      'TF-IDF + ensemble classifier over 20K+ articles reaching a 92% F1-score, served via a real-time prediction API and an interactive dashboard.',
-    stack: ['NLP', 'Scikit-learn', 'Streamlit'],
-    link: 'https://fake-news-detector-csjjjj9vyulaama4pdhgn2.streamlit.app/',
-  },
-  {
-    name: 'E-commerce Price Predictor',
-    tag: 'ML Regression',
-    blurb:
-      'XGBoost model trained on 150K+ products (RMSE 0.45), deployed behind a Flask API for real-time price prediction.',
-    stack: ['XGBoost', 'Flask', 'Feature Eng.'],
-    link: 'https://price-predictor-khraqhkv6ctev2hc79f4q8.streamlit.app/',
+    featured: true,
   },
 ]
 
