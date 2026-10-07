@@ -1,4 +1,4 @@
-import { projects } from '../data'
+import { projects, profile } from '../data'
 import Reveal from './Reveal'
 
 function tilt(e) {
@@ -6,7 +6,7 @@ function tilt(e) {
   const r = card.getBoundingClientRect()
   const px = (e.clientX - r.left) / r.width - 0.5
   const py = (e.clientY - r.top) / r.height - 0.5
-  card.style.transform = `perspective(900px) rotateY(${px * 8}deg) rotateX(${-py * 8}deg) translateY(-4px)`
+  card.style.transform = `perspective(900px) rotateY(${px * 6}deg) rotateX(${-py * 6}deg) translateY(-4px)`
   card.style.setProperty('--mx', `${(e.clientX - r.left)}px`)
   card.style.setProperty('--my', `${(e.clientY - r.top)}px`)
 }
@@ -21,53 +21,66 @@ export default function Projects() {
       <Reveal><h2 className="section-title">Projects & open source</h2></Reveal>
       <Reveal>
         <p className="section-sub">
-          Products I've shipped end to end and tooling the developer community uses.
+          Products I've built and run solo, plus open models and tools anyone can use.
         </p>
       </Reveal>
 
       <div className="proj-grid">
         {projects.map((p, i) => {
-          const hasLink = p.link && p.link !== '#'
-          const isLive = p.live && hasLink
-          const open = () => { if (hasLink) window.open(p.link, '_blank', 'noopener') }
+          const primary = p.links[0]?.href
+          const open = () => { if (primary) window.open(primary, '_blank', 'noopener') }
           return (
-            <Reveal key={p.name} delay={(i % 3) * 0.06}>
+            <Reveal key={p.name} delay={(i % 2) * 0.06}>
               <article
-                className={`proj-card ${p.featured ? 'feat' : ''} ${hasLink ? 'clickable' : ''}`}
+                className="proj-card clickable"
                 onMouseMove={tilt}
                 onMouseLeave={resetTilt}
                 onClick={open}
-                role={hasLink ? 'link' : undefined}
-                tabIndex={hasLink ? 0 : undefined}
-                onKeyDown={(e) => { if (hasLink && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); open() } }}
               >
                 <div className="proj-top">
                   <span className="proj-tag">{p.tag}</span>
-                  {isLive && (
+                  {p.live && (
                     <span className="live-badge"><span className="pulse" /> LIVE</span>
                   )}
                 </div>
                 <h3>{p.name}</h3>
+                <div className="proj-metrics">
+                  {p.metrics.map((m) => (
+                    <div key={m.label}>
+                      <strong>{m.value}</strong>
+                      <span>{m.label}</span>
+                    </div>
+                  ))}
+                </div>
                 <p>{p.blurb}</p>
                 <div className="proj-stack">
                   {p.stack.map((s) => <span key={s}>{s}</span>)}
                 </div>
-                {hasLink && (
-                  <a
-                    className="proj-link"
-                    href={p.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {isLive ? 'Visit live site →' : 'View →'}
-                  </a>
-                )}
+                <div className="proj-links">
+                  {p.links.map((l) => (
+                    <a
+                      key={l.href}
+                      className="proj-link"
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {l.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
               </article>
             </Reveal>
           )
         })}
       </div>
+
+      <Reveal>
+        <a className="more-link" href={profile.links.github} target="_blank" rel="noreferrer">
+          More on GitHub <span aria-hidden="true">→</span>
+        </a>
+      </Reveal>
     </section>
   )
 }

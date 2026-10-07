@@ -39,6 +39,12 @@ function Neurons({ count = isMobile ? 550 : 1300 }) {
 function Core() {
   const inner = useRef()
   const shell = useRef()
+  // On wide screens, sit the core behind the portrait card so it frames the photo
+  // instead of washing out the headline copy.
+  const { size } = useThree()
+  const wide = size.width >= 900
+  const x = wide ? 2.3 * (size.width / size.height) / 1.6 : 0
+  const y = wide ? 0 : 4.6
 
   useFrame((state) => {
     const t = state.clock.elapsedTime
@@ -56,12 +62,12 @@ function Core() {
 
   return (
     <Float speed={1.4} rotationIntensity={0.35} floatIntensity={0.7}>
-      <group>
+      <group position={[x, y, 0]}>
         <Sphere ref={inner} args={[1.9, 64, 64]}>
           <meshStandardMaterial
             color="#1e40af"
             emissive="#4f86ff"
-            emissiveIntensity={1.0}
+            emissiveIntensity={0.8}
             roughness={0.15}
             metalness={0.9}
           />
@@ -78,7 +84,7 @@ function Core() {
 function ResponsiveCamera() {
   const { camera, size } = useThree()
   useEffect(() => {
-    camera.position.z = size.width < 700 ? 14 : size.width < 1024 ? 10 : 8
+    camera.position.z = size.width < 700 ? 16 : size.width < 1024 ? 11 : 8
     camera.updateProjectionMatrix()
   }, [size.width, camera])
   return null

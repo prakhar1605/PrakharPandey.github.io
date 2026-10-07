@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import Scene3D from './components/Scene3D'
-import Preloader from './components/Preloader'
 import ScrollProgress from './components/ScrollProgress'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
 import Experience from './components/Experience'
+import Research from './components/Research'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import Contact from './components/Contact'
+import Socials from './components/Socials'
+
+// Three.js is the heaviest chunk — load it after the content so the page is readable immediately.
+const Scene3D = lazy(() => import('./components/Scene3D'))
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function App() {
-  const [loaded, setLoaded] = useState(false)
   const [render3D, setRender3D] = useState(true)
 
   useEffect(() => {
@@ -44,12 +46,12 @@ export default function App() {
     // Fade the 3D core down as you leave the hero so content stays readable,
     // and pause the WebGL render loop entirely once it's off-screen.
     const onScroll = () => {
+      const vis = window.scrollY < window.innerHeight * 0.95
+      setRender3D((prev) => (prev === vis ? prev : vis))
       const canvas = document.querySelector('.bg-canvas')
       if (!canvas) return
       const t = Math.min(window.scrollY / window.innerHeight, 1)
-      canvas.style.opacity = String(1 - t * 0.62)
-      const vis = window.scrollY < window.innerHeight * 0.95
-      setRender3D((prev) => (prev === vis ? prev : vis))
+      canvas.style.opacity = String(1 - t * 0.82)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
@@ -64,23 +66,26 @@ export default function App() {
 
   return (
     <>
-      {!loaded && <Preloader onDone={() => setLoaded(true)} />}
-      <Scene3D active={render3D} />
+      <Suspense fallback={null}>
+        <Scene3D active={render3D} />
+      </Suspense>
       <div className="scrim" />
       <div className="grain" />
       <ScrollProgress />
       <div className="content">
         <Navbar />
         <main>
-          <Hero started={loaded} />
+          <Hero />
           <About />
           <Experience />
+          <Research />
           <Projects />
           <Skills />
           <Contact />
         </main>
         <footer>
-          © {new Date().getFullYear()} Prakhar Pandey · Built with React, Three.js & GSAP
+          <Socials className="center small" />
+          <p>© {new Date().getFullYear()} Prakhar Pandey · IIT Guwahati</p>
         </footer>
       </div>
     </>

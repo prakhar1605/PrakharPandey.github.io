@@ -1,4 +1,4 @@
-import { stats, education, profile } from '../data'
+import { stats, education } from '../data'
 import Reveal from './Reveal'
 
 export default function About() {
@@ -7,14 +7,20 @@ export default function About() {
       <Reveal><span className="eyebrow">About</span></Reveal>
       <Reveal>
         <h2 className="section-title">
-          Data Science & AI undergrad at IIT Guwahati,<br />shipping LLM products to real users.
+          I take agents from a paper<br />to something people use.
         </h2>
       </Reveal>
       <Reveal>
         <p className="section-sub">
-          I work across the agentic stack — from RAG pipelines and knowledge graphs to multi-agent
-          orchestration — at YC-backed and international startups. I like building things end to end and
-          getting them into people's hands.
+          Final-year B.S. (Honors) in Data Science & AI at IIT Guwahati. Over the past year I've worked
+          with four remote teams across US and Singapore timezones — a UW research lab, a YC-backed
+          startup and two early-stage AI companies — while running my own products on the side.
+        </p>
+      </Reveal>
+      <Reveal>
+        <p className="section-sub about-angle">
+          What I'm good at: turning fuzzy agent problems into measurable ones — a reward you can verify,
+          a benchmark you can grade deterministically, a bug you can trace to a coordinate system.
         </p>
       </Reveal>
 
@@ -30,7 +36,7 @@ export default function About() {
       </Reveal>
 
       <Reveal delay={0.1}>
-        <div className="exp-card" style={{ marginTop: 24 }}>
+        <div className="exp-card edu-card">
           <div className="exp-top">
             <div>
               <div className="exp-role">{education.school}</div>

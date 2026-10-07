@@ -8,8 +8,8 @@ export default function Experience() {
       <Reveal><h2 className="section-title">Where I've been building</h2></Reveal>
       <Reveal>
         <p className="section-sub">
-          Three AI engineering internships across YC-backed and international startups — agentic systems,
-          RAG, and production LLM products.
+          Four remote roles across US and Singapore timezones — browser agents at a UW lab, agent
+          runtime work at a YC startup, and RAG products at two early-stage AI companies.
         </p>
       </Reveal>
 
@@ -24,7 +24,11 @@ export default function Experience() {
                       {e.role}
                       {e.current && <span className="badge-now">Now</span>}
                     </div>
-                    <div className="exp-co">{e.company}</div>
+                    <div className="exp-co">
+                      {e.companyLink
+                        ? <a href={e.companyLink} target="_blank" rel="noreferrer">{e.company} <span aria-hidden="true">↗</span></a>
+                        : e.company}
+                    </div>
                     <div className="exp-loc">◇ {e.location}</div>
                   </div>
                   <span className="exp-period">{e.period}</span>
@@ -32,6 +36,11 @@ export default function Experience() {
                 <ul className="exp-points">
                   {e.points.map((p, idx) => <li key={idx}>{p}</li>)}
                 </ul>
+                {e.stack && (
+                  <div className="exp-stack">
+                    {e.stack.map((s) => <span key={s}>{s}</span>)}
+                  </div>
+                )}
               </div>
             </div>
           </Reveal>
