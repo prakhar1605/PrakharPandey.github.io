@@ -28,6 +28,9 @@ export default function Research() {
             <p className="paper-subtitle">{p.subtitle}</p>
             <p className="paper-meta">
               <strong>{p.authors}</strong> · Workshop {p.workshop}
+              {p.arxiv && (
+                <> · <a className="paper-arxiv" href={`https://arxiv.org/abs/${p.arxiv}`} target="_blank" rel="noreferrer">arXiv:{p.arxiv}</a></>
+              )}
             </p>
 
             <p className="paper-summary">{p.summary}</p>

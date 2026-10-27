@@ -3,7 +3,7 @@ export const profile = {
   role: 'AI Engineer · Agents, Post-training & Evals',
   availability: 'Open to AI internships now · Full-time from 2027',
   tagline:
-    "Final-year Data Science & AI at IIT Guwahati. I post-train vision-language models, research multi-agent systems at UW's RAIVN Lab, shipped Skills and OAuth at Rowboat Labs (YC S24), and solo-built AI products with 25,000+ organic users.",
+    "Final-year Data Science & AI at IIT Guwahati. I post-train vision-language models, research multi-agent systems at UW's RAIVN Lab, shipped Skills and OAuth at Rowboat Labs (YC S24), and solo-built AI products with 30,000+ organic users.",
   location: 'IIT Guwahati, India',
   timezones: 'Remote across US & Singapore timezones',
   email: 'prakhar9999pandey@gmail.com',
@@ -22,11 +22,11 @@ export const highlights = [
   { label: 'NeurIPS 2026 Workshop', detail: 'sole author', href: '#research' },
   { label: 'UW RAIVN Lab', detail: 'research', href: '#experience' },
   { label: 'Rowboat Labs', detail: 'YC S24', href: '#experience' },
-  { label: '25,000+ users', detail: 'solo-built', href: '#projects' },
+  { label: '30,000+ users', detail: 'solo-built', href: '#projects' },
 ]
 
 export const stats = [
-  { value: '25,000+', label: 'Organic users on products I built solo' },
+  { value: '30,000+', label: 'Organic users on products I built solo' },
   { value: '30+', label: 'PRs merged at Rowboat Labs (YC S24)' },
   { value: '4', label: 'Remote AI roles across US & Singapore' },
   { value: '1,000+', label: 'LeetCode problems · 400+ day streak' },
@@ -55,7 +55,8 @@ export const experience = [
     period: 'May 2026 — Aug 2026',
     points: [
       'Implemented Skills support in Rowboat, an open-source AI coworker platform (15k+ GitHub stars): agents load packaged instruction sets and tools on demand, so new capabilities ship as installable packages instead of core-code changes.',
-      'Shipped ChatGPT OAuth (OAuth 2.0 + PKCE) so users run agents on an existing Codex subscription instead of managing separate API keys.',
+      'Shipped ChatGPT OAuth (OAuth 2.0 + PKCE) so users run agents on their existing ChatGPT/Codex subscription instead of managing separate API keys.',
+      'Rebuilt provider and model selection around one shared ModelSelector used on 9 surfaces, with bring-your-own-key support.',
       'Merged 30+ PRs into a TypeScript/Electron production codebase, reviewed by both co-founders.',
     ],
     stack: ['TypeScript', 'Electron', 'OAuth 2.0 / PKCE', 'Agent runtime'],
@@ -91,6 +92,7 @@ export const publications = [
     workshop: '“Who Verifies the Agents?”',
     status: 'Accepted',
     date: 'Dec 2026',
+    arxiv: '2610.33128',
     authors: 'Prakhar Pandey · sole author',
     summary:
       'Production agents inject episodic memory and SKILL.md procedures into the same context with no defined precedence. When the two contradict, which one wins — and does the agent tell the user? I built a benchmark across four conflict types (factual, format, procedural, permission), graded deterministically over tool-call payloads and output structure.',
@@ -101,7 +103,8 @@ export const publications = [
       { value: '28% → 90%', label: 'one generic “skill takes precedence” line flipped a model into performing forbidden irreversible actions' },
     ],
     links: [
-      { label: 'Read the paper', href: 'https://zenodo.org/records/21533560' },
+      { label: 'Read on arXiv', href: 'https://arxiv.org/abs/2610.33128' },
+      { label: 'PDF', href: 'https://arxiv.org/pdf/2610.33128' },
       { label: 'Code & data', href: 'https://github.com/prakhar1605/epistemic-parity-bench' },
     ],
   },
@@ -109,12 +112,12 @@ export const publications = [
 
 export const projects = [
   {
-    name: 'CareerLift',
+    name: 'Carrerlift',
     tag: 'Agentic AI career platform',
     blurb:
       'Solo-built and scaled with zero paid acquisition. Resume parsing → embeddings → vector search → LLM re-ranking against live jobs and 1,500+ research positions, with skill-gap analysis. A jobs pipeline refreshes 3,500+ openings across India, US and EU every 12–24 hours and sends personalized alerts — unattended, at near-zero infra cost.',
     metrics: [
-      { value: '25,000+', label: 'organic users' },
+      { value: '30,000+', label: 'organic users' },
       { value: '100+', label: 'paid users in 15 days' },
     ],
     stack: ['Next.js', 'Supabase', 'LLM Agents', 'Vector Search'],

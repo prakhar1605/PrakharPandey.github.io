@@ -350,6 +350,8 @@ section { padding-block: 72px; position: relative; }
 .paper-subtitle { color: #c9d4ea; font-size: 1.02rem; margin-top: 8px; }
 .paper-meta { color: var(--muted); font-size: 0.9rem; margin-top: 12px; }
 .paper-meta strong { color: var(--accent-3); font-weight: 600; }
+.paper-arxiv { color: var(--text); text-decoration: underline; text-decoration-color: rgba(96,165,250,0.5); text-underline-offset: 3px; }
+.paper-arxiv:hover { color: var(--accent-3); }
 .paper-summary { color: var(--muted); max-width: 780px; margin: 22px 0 28px; }
 .findings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 30px; }
 .finding { background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
