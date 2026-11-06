@@ -1,9 +1,7 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
-// Relative base so the build works on a GitHub Pages project page
-// (served from /PrakharPandey.github.io/) without hardcoding the path.
+// Plain static site: one HTML page and one stylesheet. Relative base so the same
+// build works on prakharpandey.dev (Vercel) and the GitHub Pages project URL.
 export default defineConfig({
   base: './',
-  plugins: [react()],
 })

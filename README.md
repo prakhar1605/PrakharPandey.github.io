@@ -1,17 +1,18 @@
-# Prakhar Pandey — portfolio
+# Prakhar Pandey — personal site
 
-Live: https://prakhar1605.github.io/PrakharPandey.github.io/
+Live: https://prakharpandey.dev
 
-React + Three.js (react-three-fiber) + GSAP, built with Vite and deployed to GitHub Pages by
-`.github/workflows/deploy.yml` on every push to `main`.
+A single static page: `index.html` plus `src/style.css`, built with Vite. Vercel deploys
+`prakharpandey.dev` on every push to `main`. The GitHub Pages copy (built by
+`.github/workflows/deploy.yml`) only redirects old `github.io` links to the domain.
 
 ## Editing content
 
-All copy lives in [`src/data.js`](src/data.js): profile and links, experience, publications,
-projects and skills. Components in `src/components/` only render that data.
+All text is in [`index.html`](index.html); edit it directly.
 
-The resume served by the site is `public/Prakhar_Pandey_Resume.pdf`; replace that file to update it.
-The link-preview card is `public/og.jpg` (1200×630).
+- Resume: replace `public/Prakhar_Pandey_Resume.pdf`.
+- Link-preview card: `public/og.jpg` (1200×630).
+- Update the "Updated <month>" line in the footer when you change things.
 
 ## Local development
 

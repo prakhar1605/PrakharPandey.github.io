@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "prakhar-pandey-github-io.vercel.app" }],
+      "destination": "https://prakharpandey.dev/:path*",
+      "permanent": true
+    }
+  ]
+}
